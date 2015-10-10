@@ -10,13 +10,19 @@ var Title = React.createClass({
 });
 
 var Stars = React.createClass({
+  getStars: function() {
+    var totalStars = Math.floor((Math.random() * 10) + 1);
+  },
+  generateStars: function() {
+    console.log(totalStars);
+  },
   render: function() {
     return (
       <div className = "col-md-5">
         <h5 className="instructions"> Total Stars: </h5>
         <div className="panel panel-default">
           <div className = "panel-body">
-            Stars populate here.
+            console.log(getStars())
           </div>
         </div>
       </div>
@@ -72,13 +78,13 @@ var PassButton = React.createClass({
 })
 
 var EqualsButton = React.createClass({
-  handleClick: function() {
-    console.log('clicked');
+  handleClick: function(event) {
+    console.log('Equals clicked: maps possible answers');
   },
   render: function() {
     return (
       <div id ="symbols">
-        <button type="button" className="btn btn-primary">=</button>
+        <button onClick = {this.handleClick} type="button" className="btn btn-primary">=</button>
       </div>
     );
   }
@@ -101,3 +107,11 @@ var EqualsButton = React.createClass({
   });
 
  React.render(<App />, document.getElementById("main"));
+
+ // The games endstate will be triggered when no item in the array can match the total of stars.
+
+ // All possible sums will be an array, derived from a forEach loop or map, in the Your Numbers section.
+
+// this state, the array of possible answers will need to communicate with the total number of stars, the equals button.
+
+// The stars will be fed data from the equals and the reset button.
